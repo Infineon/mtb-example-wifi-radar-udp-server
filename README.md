@@ -266,7 +266,7 @@ For more information about connected-sensor-kit, see [IoT sensors platform](http
 
 ## Document history
 
-Document title: *CEnnnnnn* – *UDP server: Radar data forwarding*
+Document title: *CE236643* – *UDP server: Radar data forwarding*
 
  Version | Description of change
  ------- | ---------------------
