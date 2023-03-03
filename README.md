@@ -6,14 +6,14 @@ This code example demonstrates implementing a UDP server to acquire XENSIV™ ra
 
 In this example, the UDP server waits for the UDP client to establish the connection. Once the connection is established, the server allows the user to send the commands to control the operation of radar sensor which includes start/stop or the operation of sensor in test mode or data mode.
 
-[View this README on GitHub.](https://github.com/Infineon/mtb-example-anycloud-radar-udp-server)
+[View this README on GitHub.](https://github.com/Infineon/mtb-example-wifi-radar-udp-server)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzY2NDMiLCJTcGVjIE51bWJlciI6IjAwMi0zNjY0MyIsIkRvYyBUaXRsZSI6IlVEUCBzZXJ2ZXI6IFJhZGFyIGRhdGEgZm9yd2FyZGluZyIsInJpZCI6InVzbWFuIiwiRG9jIHZlcnNpb24iOiIwLjUuMSIsIkRvYyBMYW5ndWFnZSI6IkVuZ2xpc2giLCJEb2MgRGl2aXNpb24iOiJNQ0QiLCJEb2MgQlUiOiJTQlNZUyIsIkRvYyBGYW1pbHkiOiJTVUJTWVMifQ==)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzY2NDMiLCJTcGVjIE51bWJlciI6IjAwMi0zNjY0MyIsIkRvYyBUaXRsZSI6IlVEUCBzZXJ2ZXI6IFJhZGFyIGRhdGEgZm9yd2FyZGluZyIsInJpZCI6InVzbWFubXVoIiwiRG9jIHZlcnNpb24iOiIxLjAuMCIsIkRvYyBMYW5ndWFnZSI6IkVuZ2xpc2giLCJEb2MgRGl2aXNpb24iOiJNQ0QiLCJEb2MgQlUiOiJTQlNZUyIsIkRvYyBGYW1pbHkiOiJQU09DIn0=)
 
 ## Requirements
 
-- [ModusToolbox&trade; software](https://www.infineon.com/cms/en/design-support/tools/sdk/modustoolbox-software) v2.4 or later (tested with v2.4)
-- Board support package (BSP) minimum required version: 3.0.0
+- [ModusToolbox&trade; software](https://www.infineon.com/cms/en/design-support/tools/sdk/modustoolbox-software) v3.0
+- Board support package (BSP) minimum required version: 4.0.0
 - Programming language: C
 - Associated parts: All [PSoC&trade; 6 MCU](https://www.infineon.com/cms/en/product/microcontroller/32-bit-psoc-arm-cortex-microcontroller/psoc-6-32-bit-arm-cortex-m4-mcu) parts with SDIO, [AIROC™ CYW43012 Wi-Fi & Bluetooth® combo chip](https://www.infineon.com/dgdl/Infineon-CYW43012_Single-Chip%2CUltra-Low_IEEE_802.11n-compliant_802.11ac-friendly_MAC_Baseband_Radio_with_Bluetooth_5.0_for_IoT-AdditionalTechnicalInformation-v14_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0ee89f18715f), [AIROC™ CYW4343W Wi-Fi & Bluetooth® combo chip](https://www.infineon.com/dgdl/Infineon-CYW4334WKUBGT-DataSheet-v11_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0ee1f02f680f)
 
@@ -61,7 +61,7 @@ Create the project and open it using one of the following:
 
 1. Click the **New Application** link in the **Quick Panel** (or, use **File** > **New** > **ModusToolbox&trade; Application**). This launches the [Project Creator](https://www.infineon.com/ModusToolboxProjectCreator) tool.
 
-2. Pick a kit supported by the code example from the list shown in the **Project Creator - Choose Board Support Package (BSP)** dialog.
+2. Select CYSBSYSKIT-DEV-01 kit supported by the code example from the PSoC&trade; 6 BSPs list shown in the **Project Creator - Choose Board Support Package (BSP)** dialog.
 
    When you select a supported kit, the example is reconfigured automatically to work with the kit. To work with a different supported kit later, use the [Library Manager](https://www.infineon.com/ModusToolboxLibraryManager) to choose the BSP for the supported kit. You can use the Library Manager to select or update the BSP and firmware libraries used in this application. To access the Library Manager, click the link from the **Quick Panel**.
 
@@ -69,7 +69,7 @@ Create the project and open it using one of the following:
 
    If you want to use the application for a kit not listed here, you may need to update the source files. If the kit does not have the required resources, the application may not work.
 
-3. In the **Project Creator - Select Application** dialog, choose the example by enabling the checkbox.
+3. In the **Project Creator - Select Application** dialog, choose the example **UDP Server Radar** from Sensing group by enabling the checkbox.
 
 4. (Optional) Change the suggested **New Application Name**.
 
@@ -98,10 +98,10 @@ Argument | Description | Required/optional
 
 <br />
 
-The following example clones the "[UDP server: Radar data forwarding](https://github.com/Infineon/mtb-example-anycloud-radar-udp-server)" application with the desired name "UDP_Server_Radar" configured for the *CYSBSYSKIT-DEV-01* BSP into the specified working directory, *C:/mtb_projects*:
+The following example clones the "[UDP Server Radar](https://github.com/Infineon/mtb-example-anycloud-radar-udp-server)" application with the desired name "UDPServerRadar" configured for the *CYSBSYSKIT-DEV-01* BSP into the specified working directory, *C:/mtb_projects*:
 
    ```
-   project-creator-cli --board-id CYSBSYSKIT-DEV-01 --app-id mtb-anycloud-radar-udp-server --user-app-name UDP_Server_Radar --target-dir "C:/mtb_projects"
+   project-creator-cli --board-id CYSBSYSKIT-DEV-01 --app-id mtb-example-wifi-radar-udp-server --user-app-name UDPServerRadar --target-dir "C:/mtb_projects"
    ```
 
 **Note:** The project-creator-cli tool uses the `git clone` and `make getlibs` commands to fetch the repository and import the required libraries. For details, see the "Project creator tools" section of the [ModusToolbox&trade; software user guide](https://www.infineon.com/ModusToolboxUserGuide) (locally available at *{ModusToolbox&trade; software install directory}/docs_{version}/mtb_user_guide.pdf*).
@@ -117,14 +117,6 @@ Argument | Description | Required/optional
 `--add-bsp-location`| Specify the location of the BSP (local/shared) if you prefer to add the BSP in a shared path | Optional
 
 <br />
-
-Following example adds the CY8CPROTO-062-4343W BSP to the already created application and makes it the active BSP for the app:
-
-   ```
-   library-manager-cli --project "C:/mtb_projects/MyHelloWorld" --add-bsp-name CY8CPROTO-062-4343W --add-bsp-version "latest-v4.X" --add-bsp-location "local"
-
-   library-manager-cli --project "C:/mtb_projects/MyHelloWorld" --set-active-bsp APP_CY8CPROTO-062-4343W
-   ```
 
 </details>
 
@@ -156,13 +148,23 @@ For a list of supported IDEs and more details, see the "Exporting to IDEs" secti
 
 </details>
 
+**Note:** To use this code example in ModusToolbox v2.4, please refer to [Infineon-XENSIVTM_KIT_CSK_BGT60TR13C-UserGuide](https://www.infineon.com/cms/en/product/evaluation-boards/kit_csk_bgt60tr13c/#!documents) 
+
 ## Operation
 
 1. Connect the board to your PC using the provided USB cable through the KitProg3 USB connector.
 
 2. Modify the `WIFI_SSID`, `WIFI_PASSWORD`, and `WIFI_SECURITY_TYPE` macros to match the credentials of the Wi-Fi network that you want to connect. These macros are defined in the *wifi_config.h* file. Ensure that the Wi-Fi network that you are connecting to is configured as a private network for the proper functioning of this example.
 
-3. Open a terminal program and select the KitProg3 COM port. Set the serial port parameters to 8N1 and 115200 baud.
+   **For Example**:
+
+   `WIFI_SSID` = **"IFX_Sensor"**
+
+   `WIFI_PASSWORD` = **"XXXXXXXXXXXXXX"**
+
+   `WIFI_SECURITY_TYPE` = **"WPA2"**
+
+3. Open a terminal program and select the [KitProg3](https://www.infineon.com/dgdl/Infineon-KitProg3_User_Guide-UserManual-v01_00-EN.pdf?fileId=8ac78c8c7d0d8da4017d0f01221f1853) COM port. Set the serial port parameters to 8N1 and 115200 baud.
 
 4. Program the board using one of the following:
 
@@ -251,7 +253,7 @@ Code examples  | [Using ModusToolbox&trade; software](https://github.com/Infineo
 Device documentation | [PSoC&trade; 6 MCU datasheets](https://www.infineon.com/cms/en/product/microcontroller/32-bit-psoc-arm-cortex-microcontroller/psoc-6-32-bit-arm-cortex-m4-mcu/#!documents) <br /> [PSoC&trade; 6 technical reference manuals](https://www.infineon.com/cms/en/product/microcontroller/32-bit-psoc-arm-cortex-microcontroller/psoc-6-32-bit-arm-cortex-m4-mcu/#!documents)<br />
 Development kits | [Rapid IoT connect developer kit](https://www.infineon.com/cms/en/product/evaluation-boards/kit_csk_bgt60tr13c/) <br>
 Libraries on GitHub  | [sensor-xensiv-bgt60trxx](https://github.com/Infineon/sensor-xensiv-bgt60trxx) –  Driver library to interface with the XENSIV&trade; BGT60TRxx 60 GHz FMCW Radar Sensors <br /> [mtb-pdl-cat1](https://github.com/Infineon/mtb-pdl-cat1) – PSoC&trade; 6 peripheral driver library (PDL)  <br /> [mtb-hal-cat1](https://github.com/Infineon/mtb-hal-cat1) – Hardware abstraction layer (HAL) library <br /> [retarget-io](https://github.com/Infineon/retarget-io) – Utility library to retarget STDIO messages to a UART port <br />
-Middleware on GitHub  |  [wifi-connection-manager](https://github.com/Infineon/wifi-connection-manager) – Wi-Fi connection manager (WCM) library and docs <br> [wifi-mw-core] [psoc6-middleware](https://github.com/Infineon/modustoolbox-software#psoc-6-middleware-libraries) – Links to all PSoC&trade; 6 MCU middleware
+Middleware on GitHub  |  [wifi-core-freertos-lwip-mbedtls](https://github.com/Infineon/wifi-core-freertos-lwip-mbedtls) – Wi-Fi connectivity libraries and docs <br>  [psoc6-middleware](https://github.com/Infineon/modustoolbox-software#psoc-6-middleware-libraries) – Links to all PSoC&trade; 6 MCU middleware
 Tools  | [Eclipse IDE for ModusToolbox&trade; software](https://www.infineon.com/modustoolbox) – ModusToolbox&trade; software is a collection of easy-to-use software and tools enabling rapid development with Infineon MCUs, covering applications from embedded sense and control to wireless and cloud-connected systems using AIROC&trade; Wi-Fi and Bluetooth® connectivity devices. <br />
 
 <br />
@@ -271,6 +273,7 @@ Document title: *CE236643* – *UDP server: Radar data forwarding*
  Version | Description of change
  ------- | ---------------------
  0.5.1   | New code example
+ 1.0.0   | Major update to support ModusToolbox&trade; software v3.0 <br /> CE will not be backward compatible with previous versions of ModusToolbox&trade; software 
 <br />
 
 ---------------------------------------------------------
